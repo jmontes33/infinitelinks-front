@@ -3,13 +3,13 @@ import {
   Navigate,
   Route,
   Routes,
-} from "react-router-dom";
-import useUserLogged from "../hooks/userUserLogged";
-import Authentication from "../pages/Authentication";
-import Application from "../pages/Application";
+} from 'react-router-dom';
+import Authentication from '../pages/Authentication';
+import Application from '../pages/Application';
+import { useValueStore } from '../store/valueStore';
 
 const defaultRouteNotResolved = (
-  <Route path="*" element={<p className="text-black">Path not resolved</p>} />
+  <Route path='*' element={<p className='text-black'>Path not resolved</p>} />
 );
 
 const ContentIfUserIsLogged = () => {
@@ -17,26 +17,28 @@ const ContentIfUserIsLogged = () => {
     <Routes>
       {defaultRouteNotResolved}
       <Route
-        path="/"
+        path='/'
         element={
           <Navigate to={`${import.meta.env.VITE_APP_BASE_URL}application`} />
         }
       />
-      <Route path="/authentication" element={<Authentication />} />
-      <Route path="/application" element={<Application />} />
+      <Route path='/authentication' element={<Authentication />} />
+      <Route path='/application' element={<Application />} />
     </Routes>
   );
 };
 
 function RouterComponent() {
-  const [userIsLogged] = useUserLogged();
-  console.log(userIsLogged);
+  const { userToken } = useValueStore((state) => ({
+    userToken: state.userToken,
+  }));
+  const [userIsLogged] = userToken;
 
   return (
     <Router basename={import.meta.env.VITE_APP_BASE_URL as string}>
       <Routes>
         <Route
-          path="/"
+          path='/'
           element={
             <Navigate to={`${import.meta.env.VITE_APP_BASE_URL}application`} />
           }
@@ -54,7 +56,7 @@ function RouterComponent() {
           }
         />
         <Route
-          path={"/*"}
+          path={'/*'}
           element={
             !userIsLogged ? (
               <Navigate

@@ -1,3 +1,59 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #e6e6e6;
+}
+
+.title {
+  background: radial-gradient(
+    12441.24% 97.1% at 5.56% 79.01%,
+    #eb568e 0%,
+    #144ee3 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@font-face {
+  font-family: 'Satoshi-Bold';
+  src: url('src/assets/fonts/Satoshi-Bold.ttf');
+}
+
+.satoshi-bold {
+  font-family: Satoshi-Bold;
+}
+
+@font-face {
+  font-family: 'Satoshi-Regular';
+  src: url('src/assets/fonts/Satoshi-Regular.ttf');
+}
+
+.satoshi-regular {
+  font-family: Satoshi-Regular;
+}
+
+@font-face {
+  font-family: 'Acorn-Bold';
+  src: url('src/assets/fonts/Acorn-Bold.ttf');
+}
+
+.acorn {
+  font-family: Acorn-Bold;
+}
+
+.text-style {
+  background: linear-gradient(90deg, #ad00ff -2.4%, #ffb800 102.07%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.main-shadow {
+  filter: drop-shadow(1px 1px 10px rgba(0, 0, 0, 0.25));
+}
