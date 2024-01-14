@@ -38,7 +38,6 @@ function Application() {
       setUserToken(storedToken);
       setUserName(decodedToken);
     }
-    console.log(username);
   }, [setUserToken]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

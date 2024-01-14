@@ -52,7 +52,6 @@ function LoginForm() {
       })
       .catch((error) => {
         console.log(error);
-        console.log(data);
       });
   };
 
