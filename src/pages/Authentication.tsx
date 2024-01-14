@@ -21,9 +21,11 @@ function Authentication() {
           />
         </section>
       </main>
-      <main className='p-5'>
+      <main className='flex md:hidden flex-col p-5 '>
         <nav className='my-5'>
-          <h1 className='text-black text-center acorn text-6xl'>Infinite URL</h1>
+          <h1 className='text-black text-center acorn text-6xl'>
+            Infinite URL
+          </h1>
         </nav>
         <section className=''>
           {loginForm ? <LoginForm /> : <RegisterForm />}

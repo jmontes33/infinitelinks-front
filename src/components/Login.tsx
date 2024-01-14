@@ -39,7 +39,6 @@ function LoginForm() {
           setWrongCredentials(true);
           return;
         }
-        console.log(response);
         setUserToken(response.message.access_token);
         Cookies.set('token', response.message.access_token, {
           expires: 7,
@@ -53,6 +52,7 @@ function LoginForm() {
       })
       .catch((error) => {
         console.log(error);
+        console.log(data);
       });
   };
 
@@ -106,7 +106,7 @@ function LoginForm() {
           </p>
           <div className='flex justify-between'>
             <div className='flex gap-3 text-black'>
-              <input type='checkbox' name='' id='' />
+              <input type='checkbox' name='' id='rememberMeDesktop' />
               Remember me
             </div>
             <p className='text-black'>Forgot password?</p>
@@ -137,7 +137,7 @@ function LoginForm() {
               className='w-full p-2 text-black rounded-md border-2 border-[#E3E3E3]'
               type='text'
               name='username'
-              id='username'
+              id='username-mobile'
               placeholder='Enter your username'
               onChange={(e) => {
                 setUser(e.target.value);
@@ -152,7 +152,7 @@ function LoginForm() {
               className='w-full p-2 text-black rounded-md border-2 border-[#E3E3E3]'
               type='password'
               name='password'
-              id='password'
+              id='password-mobile'
               placeholder='Enter your password'
               onChange={(e) => {
                 setPassword(e.target.value);
