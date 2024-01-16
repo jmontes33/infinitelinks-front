@@ -93,7 +93,7 @@ function Application() {
 
   return (
     <>
-      <main className='md:flex hidden flex-col'>
+      <main className='md:flex hidden flex-col animate-in'>
         <nav className=''>
           <div className='max-w-[1200px] flex justify-between p-10 m-auto text-black'>
             <div className='flex items-center gap-5'>
@@ -249,7 +249,7 @@ function Application() {
           )}
         </section>
       </main>
-      <main className='flex md:hidden flex-col'>
+      <main className='flex md:hidden flex-col animate-in'>
         <nav className=''>
           <div className='flex justify-center p-5 m-auto text-black'>
             <div className='flex items-center justify-center gap-5'>
@@ -387,7 +387,7 @@ function Application() {
                               className='border-b border-[#E3E3E3]'
                             >
                               <td className='py-3 px-4 max-w-[100px] overflow-scroll'>
-                              <div className='whitespace-nowrap overflow-scroll'>
+                                <div className='whitespace-nowrap overflow-scroll'>
                                   {link.shortUrl}
                                 </div>
                               </td>

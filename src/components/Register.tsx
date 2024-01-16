@@ -14,6 +14,7 @@ function RegisterForm() {
   const [message, setMessage] = useState('');
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    console.log('submit');
     e.preventDefault();
 
     const data = {

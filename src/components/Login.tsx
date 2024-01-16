@@ -57,7 +57,9 @@ function LoginForm() {
 
   return (
     <>
-      <div className='md:flex hidden flex-col gap-10 bg-white py-7 px-10 text-[#FFFFF2] rounded-xl min-w-[500px] main-shadow'>
+      <div
+        className='md:flex hidden flex-col gap-10 bg-white py-7 px-10 text-[#FFFFF2] rounded-xl min-w-[500px] main-shadow'
+      >
         <div className='flex flex-col gap-3'>
           <h2 className='text-2xl text-black'>Welcome!</h2>
           <div className='flex flex-col gap-2'>

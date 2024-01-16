@@ -8,7 +8,7 @@ function ShorteredLink() {
 
   return (
     <>
-      <div className='md:flex hidden flex-col gap-16 text-black bg-[#FBF7F5] p-10 min-w-[600px] max-w-[600px] rounded-xl'>
+      <div className='animate-in md:flex hidden flex-col gap-16 text-black bg-[#FBF7F5] p-10 min-w-[600px] rounded-xl'>
         <div className='flex justify-between'>
           <h2 className='font-bold text-2xl'>Shortered Link</h2>
           <button
@@ -20,7 +20,7 @@ function ShorteredLink() {
         </div>
         <h2 className='font-bold text-3xl'>{linkShortened}</h2>
       </div>
-      <div className='flex md:hidden flex-col gap-8 text-black bg-[#FBF7F5] p-10 rounded-xl'>
+      <div className='animate-in flex md:hidden flex-col gap-8 text-black bg-[#FBF7F5] p-10 rounded-xl'>
         <div className='flex justify-between items-center'>
           <h2 className='font-bold text-xl'>Shortered Link</h2>
           <button

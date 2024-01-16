@@ -9,9 +9,11 @@ function Authentication() {
 
   return (
     <>
-      <main className='md:flex hidden flex-col max-w-[1200px] m-auto'>
+      <main className='md:flex hidden flex-col max-w-[1200px] m-auto animate-in'>
         <nav className='mt-10'>
-          <h1 className='text-black acorn text-6xl'>Infinite URL</h1>
+          <h1 className='text-black acorn text-6xl text-center'>
+            Infinite URL
+          </h1>
         </nav>
         <section className='flex justify-center items-center h-screen w-full gap-36'>
           {loginForm ? <LoginForm /> : <RegisterForm />}
@@ -21,7 +23,7 @@ function Authentication() {
           />
         </section>
       </main>
-      <main className='flex md:hidden flex-col p-5 '>
+      <main className='flex md:hidden flex-col p-5 animate-in'>
         <nav className='my-5'>
           <h1 className='text-black text-center acorn text-6xl'>
             Infinite URL
