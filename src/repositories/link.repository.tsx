@@ -7,7 +7,7 @@ export const linkRepository = {
     const token = Cookies.get('token');
     if (token) {
       const request = await http.authPost(
-        import.meta.env.VITE_APP_API_URL + '/auth/short-url',
+        import.meta.env.VITE_APP_API_URL + 'auth/short-url',
         JSON.stringify(data),
         token
       );
@@ -22,7 +22,7 @@ export const linkRepository = {
 
     if (token) {
       const request = await http.authGet(
-        import.meta.env.VITE_APP_API_URL + `/auth/get-all-links/${username}`,
+        import.meta.env.VITE_APP_API_URL + `auth/get-all-links/${username}`,
         token
       );
       return request;
