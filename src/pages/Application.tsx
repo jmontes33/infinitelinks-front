@@ -98,7 +98,7 @@ function Application() {
         <nav className=''>
           <div className='max-w-[1200px] flex justify-between p-10 m-auto text-black'>
             <div className='flex items-center gap-5'>
-              <img src='public/link-svgrepo-com 1.svg' alt='' />
+              <img src='/link-svgrepo-com 1.svg' alt='' />
               <h1 className='acorn text-4xl'>Infinite Links</h1>
             </div>
             <button className='satoshi' onClick={() => logout()}>
@@ -255,7 +255,7 @@ function Application() {
         <nav className=''>
           <div className='flex justify-center p-5 m-auto text-black'>
             <div className='flex items-center justify-center gap-5'>
-              <img src='public/link-svgrepo-com 1.svg' alt='' />
+              <img src='/link-svgrepo-com 1.svg' alt='' />
               <h1 className='acorn text-4xl'>Infinite URL</h1>
             </div>
             {/* <button className='satoshi' onClick={() => logout()}>

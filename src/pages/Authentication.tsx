@@ -18,19 +18,19 @@ function Authentication() {
         </nav>
         <section className='flex justify-center w-full gap-36'>
           {loginForm ? <LoginForm /> : <RegisterForm />}
-          <img src='public/small-team-discussing-ideas-2194220-0.svg' alt='' />
+          <img src='/small-team-discussing-ideas-2194220-0.svg' alt='' />
         </section>
         <section className='flex flex-col justify-center items-center w-full gap-10 mb-24'>
           <h1 className='text-center text-4xl acorn'>
             A simple and fast way to shorten links.
           </h1>
           <img
-            src='public/create-link-view.png'
+            src='/create-link-view.png'
             alt='app image'
             className='hover:translate-y-[-20px] transition-all'
           />
           <img
-            src='public/links-view.png'
+            src='/links-view.png'
             alt='app image'
             className='hover:translate-y-[-20px] transition-all'
           />

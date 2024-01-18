@@ -22,7 +22,7 @@ body {
 
 @font-face {
   font-family: 'Satoshi-Bold';
-  src: url('public/Satoshi-Bold.ttf');
+  src: url('/Satoshi-Bold.ttf');
 }
 
 .satoshi-bold {
@@ -31,7 +31,7 @@ body {
 
 @font-face {
   font-family: 'Satoshi-Regular';
-  src: url('public/Satoshi-Regular.ttf');
+  src: url('/Satoshi-Regular.ttf');
 }
 
 .satoshi-regular {
@@ -40,7 +40,7 @@ body {
 
 @font-face {
   font-family: 'Acorn-Bold';
-  src: url('public/Acorn-Bold.ttf');
+  src: url('/Acorn-Bold.ttf');
 }
 
 .acorn {
