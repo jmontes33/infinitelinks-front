@@ -8,6 +8,7 @@ import ShorteredLink from '../components/ShorteredLink';
 import Cookies from 'js-cookie';
 import { jwtDecode } from 'jwt-decode';
 import { LinkData } from '../repositories/dto/link.dto';
+import Footer from '../components/Footer';
 
 function Application() {
   const [active, setActive] = useState(false);
@@ -93,11 +94,11 @@ function Application() {
 
   return (
     <>
-      <main className='md:flex hidden flex-col animate-in'>
+      <main className='md:flex hidden flex-col animate-in h-screen'>
         <nav className=''>
           <div className='max-w-[1200px] flex justify-between p-10 m-auto text-black'>
             <div className='flex items-center gap-5'>
-              <img src='src/assets/link-svgrepo-com 1.svg' alt='' />
+              <img src='public/link-svgrepo-com 1.svg' alt='' />
               <h1 className='acorn text-4xl'>Infinite Links</h1>
             </div>
             <button className='satoshi' onClick={() => logout()}>
@@ -248,12 +249,13 @@ function Application() {
             </Tabs>
           )}
         </section>
+        <Footer />
       </main>
       <main className='flex md:hidden flex-col animate-in'>
         <nav className=''>
           <div className='flex justify-center p-5 m-auto text-black'>
             <div className='flex items-center justify-center gap-5'>
-              <img src='src/assets/link-svgrepo-com 1.svg' alt='' />
+              <img src='public/link-svgrepo-com 1.svg' alt='' />
               <h1 className='acorn text-4xl'>Infinite URL</h1>
             </div>
             {/* <button className='satoshi' onClick={() => logout()}>
