@@ -51,7 +51,7 @@ function Application() {
           <div className='max-w-[1200px] flex justify-between p-10 m-auto text-black'>
             <div className='flex items-center gap-5'>
               <img src='/link-svgrepo-com 1.svg' alt='' />
-              <h1 className='acorn text-4xl'>Infinite Links</h1>
+              <h1 className='acorn text-4xl'>Infinite URL</h1>
             </div>
           </div>
         </nav>
@@ -82,7 +82,7 @@ function Application() {
               </TabList>
               <TabPanel className='bg-[#FBF7F5] rounded-b-lg rounded-tr-lg'>
                 <div className='p-7 flex flex-col gap-5 min-h-[420px]'>
-                  <h1 className='satoshi-regular font-bold text-4xl text-black'>
+                  <h1 className='font-bold text-4xl text-black'>
                     Shorten a long link
                   </h1>
                   <form
@@ -90,9 +90,7 @@ function Application() {
                     className='flex flex-col gap-10'
                   >
                     <div className='flex flex-col gap-3'>
-                      <h2 className='satoshi-regular text-2xl text-black'>
-                        Paste a long URL
-                      </h2>
+                      <h2 className='text-2xl text-black'>Paste a long URL</h2>
                       <p className={message ? 'text-red-500' : 'hidden'}>
                         Short URL is already in use
                       </p>
@@ -109,10 +107,8 @@ function Application() {
                     </div>
                     <div className='flex flex-col justify-between items-center gap-3'>
                       <div className='flex w-full gap-8'>
-                        <h2 className='satoshi-regular text-2xl w-full text-black'>
-                          Domain
-                        </h2>
-                        <h2 className='satoshi-regular text-2xl w-full text-black'>
+                        <h2 className='text-2xl w-full text-black'>Domain</h2>
+                        <h2 className='text-2xl w-full text-black'>
                           Enter a back-half (optional)
                         </h2>
                       </div>
@@ -122,11 +118,9 @@ function Application() {
                           name='domain'
                           id='domain'
                         >
-                          <option value='infiniteurl'>rincondeldev</option>
+                          <option value='infiniteurl'>infiniteurl</option>
                         </select>
-                        <h1 className='satoshi-regular text-2xl text-black'>
-                          /
-                        </h1>
+                        <h1 className='text-2xl text-black'>/</h1>
                         <input
                           onChange={(e) => {
                             setShortUrl(e.target.value);
@@ -189,7 +183,7 @@ function Application() {
               </TabList>
               <TabPanel className='bg-[#FBF7F5] rounded-b-lg rounded-tr-lg'>
                 <div className='p-7 flex flex-col gap-5 min-h-[420px]'>
-                  <h1 className='satoshi-regular font-bold text-4xl text-black'>
+                  <h1 className='font-bold text-4xl text-black'>
                     Shorten a long link
                   </h1>
                   <form
@@ -197,9 +191,7 @@ function Application() {
                     className='flex flex-col gap-10'
                   >
                     <div className='flex flex-col gap-3'>
-                      <h2 className='satoshi-regular text-2xl text-black'>
-                        Paste a long URL
-                      </h2>
+                      <h2 className='text-2xl text-black'>Paste a long URL</h2>
                       <p className={message ? 'text-red-500' : 'hidden'}>
                         Short URL is already in use
                       </p>
@@ -216,10 +208,8 @@ function Application() {
                     </div>
                     <div className='flex flex-col justify-between items-center gap-1'>
                       <div className='flex w-full gap-8'>
-                        <h2 className='satoshi-regular text-md w-full text-black'>
-                          Domain
-                        </h2>
-                        <h2 className='satoshi-regular text-md w-full text-black'>
+                        <h2 className='text-md w-full text-black'>Domain</h2>
+                        <h2 className='text-md w-full text-black'>
                           Enter a back-half
                         </h2>
                       </div>
@@ -229,11 +219,9 @@ function Application() {
                           name='domain'
                           id='domain'
                         >
-                          <option value='infiniteurl'>rincondeldev</option>
+                          <option value='infiniteurl'>infiniteurl</option>
                         </select>
-                        <h1 className='satoshi-regular text-2xl text-black'>
-                          /
-                        </h1>
+                        <h1 className='text-2xl text-black'>/</h1>
                         <input
                           onChange={(e) => {
                             setShortUrl(e.target.value);
