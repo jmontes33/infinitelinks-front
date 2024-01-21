@@ -4,17 +4,11 @@ import Cookies from 'js-cookie';
 
 export const linkRepository = {
   createLink: async (data: CreateLinkDto) => {
-    const token = Cookies.get('token');
-    if (token) {
-      const request = await http.authPost(
-        import.meta.env.VITE_APP_API_URL + 'auth/short-url',
-        JSON.stringify(data),
-        token
-      );
-      return request;
-    } else {
-      return null;
-    }
+    const request = await http.post(
+      import.meta.env.VITE_APP_API_URL + 'auth/short-url',
+      JSON.stringify(data)
+    );
+    return request;
   },
 
   getAllLinks: async (username: string) => {

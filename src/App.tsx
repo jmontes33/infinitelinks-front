@@ -1,11 +1,15 @@
-import "./App.css";
-
-import RouterComponent from "./routes/routes";
+import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Application from './pages/Application';
 
 function App() {
   return (
     <>
-      <RouterComponent />
+      <Router>
+        <Routes>
+          <Route path='/' element={<Application />} />
+        </Routes>
+      </Router>
     </>
   );
 }

@@ -1,10 +1,13 @@
 import { useValueStore } from '../store/valueStore';
+import toast from 'react-hot-toast';
 
 function ShorteredLink() {
   const { linkShortened, setLinkShortenedModal } = useValueStore((state) => ({
     linkShortened: state.linkShortened,
     setLinkShortenedModal: state.setLinkShortenedModal,
   }));
+
+  const notify = () => toast.success('Copied!');
 
   return (
     <>
@@ -18,7 +21,15 @@ function ShorteredLink() {
             X
           </button>
         </div>
-        <h2 className='font-bold text-3xl'>{linkShortened}</h2>
+        <h2
+          onClick={() => {
+            notify();
+            navigator.clipboard.writeText(linkShortened);
+          }}
+          className='font-bold text-3xl cursor-pointer'
+        >
+          {linkShortened}
+        </h2>
       </div>
       <div className='animate-in flex md:hidden flex-col gap-8 text-black bg-[#FBF7F5] p-10 rounded-xl'>
         <div className='flex justify-between items-center'>
@@ -30,7 +41,9 @@ function ShorteredLink() {
             X
           </button>
         </div>
-        <h2 className='font-bold'>{linkShortened}</h2>
+        <a href={linkShortened} className='font-bold cursor-pointer'>
+          {linkShortened}
+        </a>
       </div>
     </>
   );

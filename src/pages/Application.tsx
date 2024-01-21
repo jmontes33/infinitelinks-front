@@ -1,51 +1,30 @@
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import LinkService from '../services/link.service';
 import { useValueStore } from '../store/valueStore';
-import { LinkDto } from '../repositories/dto/link.dto';
 import ShorteredLink from '../components/ShorteredLink';
-import Cookies from 'js-cookie';
-import { jwtDecode } from 'jwt-decode';
-import { LinkData } from '../repositories/dto/link.dto';
 import Footer from '../components/Footer';
 
 function Application() {
   const [active, setActive] = useState(false);
   const [originalUrl, setOriginalUrl] = useState('');
   const [shortUrl, setShortUrl] = useState('');
-  const {
-    username,
-    setLinkShortened,
-    linkShortenedModal,
-    setLinkShortenedModal,
-    setUserName,
-    setUserToken,
-  } = useValueStore((state) => ({
-    username: state.username,
-    setLinkShortened: state.setLinkShortened,
-    linkShortenedModal: state.linkShortenedModal,
-    setLinkShortenedModal: state.setLinkShortenedModal,
-    setUserName: state.setUserName,
-    setUserToken: state.setUserToken,
-  }));
-  const [links, setLinks] = useState<LinkData | null>(null);
+  const { setLinkShortened, linkShortenedModal, setLinkShortenedModal } =
+    useValueStore((state) => ({
+      username: state.username,
+      setLinkShortened: state.setLinkShortened,
+      linkShortenedModal: state.linkShortenedModal,
+      setLinkShortenedModal: state.setLinkShortenedModal,
+      setUserName: state.setUserName,
+      setUserToken: state.setUserToken,
+    }));
   const [message, setMessage] = useState('');
-
-  useEffect(() => {
-    const storedToken = Cookies.get('token');
-    if (storedToken) {
-      const decodedToken = (jwtDecode as any)(storedToken).username;
-      setUserToken(storedToken);
-      setUserName(decodedToken);
-    }
-  }, [setUserToken]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const data = {
-      username: username,
       originalUrl: originalUrl,
       shortUrl: shortUrl,
     };
@@ -65,33 +44,6 @@ function Application() {
       });
   };
 
-  useEffect(() => {
-    LinkService.getallLinks(username)
-      .then((response: LinkDto) => {
-        setLinks(response.data);
-        if (response.status !== 200) {
-          Cookies.remove('token', {
-            path: '',
-            domain: import.meta.env.VITE_APP_DOMAIN,
-          });
-
-          window.location.href = '/authentication';
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [active]);
-
-  const logout = () => {
-    Cookies.remove('token', {
-      path: '',
-      domain: import.meta.env.VITE_APP_DOMAIN,
-    });
-
-    window.location.href = '/authentication';
-  };
-
   return (
     <>
       <main className='md:flex hidden flex-col animate-in h-screen'>
@@ -101,9 +53,6 @@ function Application() {
               <img src='/link-svgrepo-com 1.svg' alt='' />
               <h1 className='acorn text-4xl'>Infinite Links</h1>
             </div>
-            <button className='satoshi' onClick={() => logout()}>
-              Logout
-            </button>
           </div>
         </nav>
         <section className='flex flex-col gap-5 my-10'>
@@ -128,17 +77,7 @@ function Application() {
                       : 'bg-[#FBF7F5] px-5 py-2 rounded-t-lg text-black cursor-pointer satoshi-regular'
                   }
                 >
-                  Short link
-                </Tab>
-                <Tab
-                  onClick={() => setActive(true)}
-                  className={
-                    active
-                      ? 'bg-[#FBF7F5] px-5 py-2 rounded-t-lg text-black cursor-pointer satoshi-regular'
-                      : 'bg-[#F2F1F0] px-5 py-2 rounded-t-lg text-black cursor-pointer border-x-2 border-t-2 satoshi-regular'
-                  }
-                >
-                  My links
+                  Shorten URL
                 </Tab>
               </TabList>
               <TabPanel className='bg-[#FBF7F5] rounded-b-lg rounded-tr-lg'>
@@ -183,7 +122,7 @@ function Application() {
                           name='domain'
                           id='domain'
                         >
-                          <option value='infiniteurl'>infiniteurl</option>
+                          <option value='infiniteurl'>rincondeldev</option>
                         </select>
                         <h1 className='satoshi-regular text-2xl text-black'>
                           /
@@ -209,43 +148,6 @@ function Application() {
                   </form>
                 </div>
               </TabPanel>
-              <TabPanel className='bg-[#FBF7F5] rounded-b-lg rounded-tr-lg'>
-                <div className='p-7 flex flex-col gap-5 min-h-[420px]'>
-                  <h1 className='satoshi-regular font-bold text-4xl text-black'>
-                    My Links
-                  </h1>
-                  <div className='overflow-x-auto'>
-                    <table className='min-w-full bg-[#FBF7F5] shadow-md rounded-xl border-2 border-[#E3E3E3]'>
-                      <thead>
-                        <tr className='text-black satoshi-regular font-bold text-xl bg-[#FBF7F5]'>
-                          <th className='py-3 px-4 text-left'>Shorted Link</th>
-                          <th className='py-3 px-4 text-left'>Original Link</th>
-                          <th className='py-3 px-4 text-left'>Clicks</th>
-                          <th className='py-3 px-4 text-left'>Status</th>
-                        </tr>
-                      </thead>
-                      <tbody className='text-blue-gray-900 text-[#452B1A] font-bold'>
-                        {Array.isArray(links) &&
-                          links.map((link, index) => (
-                            <tr
-                              key={index}
-                              className='border-b border-[#E3E3E3]'
-                            >
-                              <td className='py-3 px-4'>{link.shortUrl}</td>
-                              <td className='py-3 px-4 max-w-[290px] overflow-scroll'>
-                                <div className='whitespace-nowrap overflow-scroll'>
-                                  {link.originalUrl}
-                                </div>
-                              </td>
-                              <td className='py-3 px-4'>{link.clicks}</td>
-                              <td className='py-3 px-4'>{link.state}</td>
-                            </tr>
-                          ))}
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </TabPanel>
             </Tabs>
           )}
         </section>
@@ -258,12 +160,9 @@ function Application() {
               <img src='/link-svgrepo-com 1.svg' alt='' />
               <h1 className='acorn text-4xl'>Infinite URL</h1>
             </div>
-            {/* <button className='satoshi' onClick={() => logout()}>
-              Logout
-            </button> */}
           </div>
         </nav>
-        <section className='flex flex-col gap-5 my-10'>
+        <section className='flex flex-col gap-5 my-10 w-full'>
           <h1 className='acorn text-5xl text-[#452B1A] text-center text-style'>
             Link Shortener
           </h1>
@@ -285,17 +184,7 @@ function Application() {
                       : 'bg-[#FBF7F5] px-5 py-2 rounded-t-lg text-black cursor-pointer satoshi-regular'
                   }
                 >
-                  Short link
-                </Tab>
-                <Tab
-                  onClick={() => setActive(true)}
-                  className={
-                    active
-                      ? 'bg-[#FBF7F5] px-5 py-2 rounded-t-lg text-black cursor-pointer satoshi-regular'
-                      : 'bg-[#F2F1F0] px-5 py-2 rounded-t-lg text-black cursor-pointer border-x-2 border-t-2 satoshi-regular'
-                  }
-                >
-                  My links
+                  Shorten URL
                 </Tab>
               </TabList>
               <TabPanel className='bg-[#FBF7F5] rounded-b-lg rounded-tr-lg'>
@@ -340,7 +229,7 @@ function Application() {
                           name='domain'
                           id='domain'
                         >
-                          <option value='infiniteurl'>infiniteurl</option>
+                          <option value='infiniteurl'>rincondeldev</option>
                         </select>
                         <h1 className='satoshi-regular text-2xl text-black'>
                           /
@@ -364,47 +253,6 @@ function Application() {
                       Shorten link
                     </button>
                   </form>
-                </div>
-              </TabPanel>
-              <TabPanel className='bg-[#FBF7F5] rounded-b-lg rounded-tr-lg'>
-                <div className='p-4 flex flex-col gap-5 min-h-[420px]'>
-                  <h1 className='satoshi-regular font-bold text-4xl text-black'>
-                    My Links
-                  </h1>
-                  <div className='overflow-x-auto'>
-                    <table className='min-w-full bg-[#FBF7F5] shadow-md rounded-xl border-2 border-[#E3E3E3]'>
-                      <thead>
-                        <tr className='text-black satoshi-regular text-xs bg-[#FBF7F5]'>
-                          <th className='py-3 px-4 text-left'>Shorted Link</th>
-                          <th className='py-3 px-4 text-left'>Original Link</th>
-                          <th className='py-3 px-4 text-left'>Clicks</th>
-                          <th className='py-3 px-4 text-left'>Status</th>
-                        </tr>
-                      </thead>
-                      <tbody className='text-blue-gray-900 text-[#452B1A] font-bold text-xs'>
-                        {Array.isArray(links) &&
-                          links.map((link, index) => (
-                            <tr
-                              key={index}
-                              className='border-b border-[#E3E3E3]'
-                            >
-                              <td className='py-3 px-4 max-w-[100px] overflow-scroll'>
-                                <div className='whitespace-nowrap overflow-scroll'>
-                                  {link.shortUrl}
-                                </div>
-                              </td>
-                              <td className='py-3 px-4 max-w-[100px] overflow-scroll'>
-                                <div className='whitespace-nowrap overflow-scroll'>
-                                  {link.originalUrl}
-                                </div>
-                              </td>
-                              <td className='py-3 px-4'>{link.clicks}</td>
-                              <td className='py-3 px-4'>{link.state}</td>
-                            </tr>
-                          ))}
-                      </tbody>
-                    </table>
-                  </div>
                 </div>
               </TabPanel>
             </Tabs>

@@ -37,7 +37,7 @@ function Authentication() {
         </section>
         <Footer />
       </main>
-      <main className='flex md:hidden flex-col p-5 animate-in'>
+      <main className='flex md:hidden flex-col p-5 animate-in gap-16'>
         <nav className='my-5'>
           <h1 className='text-black text-center acorn text-6xl'>
             Infinite URL
@@ -45,6 +45,21 @@ function Authentication() {
         </nav>
         <section className=''>
           {loginForm ? <LoginForm /> : <RegisterForm />}
+        </section>
+        <section className='flex flex-col justify-center items-center w-full gap-10 mb-24'>
+          <h1 className='text-center text-4xl acorn'>
+            A simple and fast way to shorten links.
+          </h1>
+          <img
+            src='/create-link-view.png'
+            alt='app image'
+            className='hover:translate-y-[-20px] transition-all'
+          />
+          <img
+            src='/links-view.png'
+            alt='app image'
+            className='hover:translate-y-[-20px] transition-all'
+          />
         </section>
       </main>
     </>

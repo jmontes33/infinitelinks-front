@@ -1,0 +1,13 @@
+{
+  "rewrites": [
+    {
+      "source": "/authentication/:path*",
+      "destination": "/authentication/index.html"
+    },
+    {
+      "source": "/application/:path*",
+      "destination": "/application/index.html"
+    },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
