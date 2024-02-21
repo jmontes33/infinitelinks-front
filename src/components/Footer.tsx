@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <div className='fixed bottom-0 w-full text-center mb-5 py-2'>
+    <div className='flex justify-center mt-auto w-[700px] text-center mb-5 py-2'>
       <p>
         Made by{' '}
         <a

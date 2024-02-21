@@ -46,7 +46,7 @@ function Application() {
 
   return (
     <>
-      <main className='md:flex hidden flex-col animate-in h-screen'>
+      <main className='md:flex hidden flex-col items-center animate-in h-screen'>
         <nav className=''>
           <div className='max-w-[1200px] flex justify-between p-10 m-auto text-black'>
             <div className='flex items-center gap-5'>
@@ -147,7 +147,7 @@ function Application() {
         </section>
         <Footer />
       </main>
-      <main className='flex md:hidden flex-col animate-in'>
+      <main className='flex md:hidden flex-col items-center h-screen animate-in'>
         <nav className=''>
           <div className='flex justify-center p-5 m-auto text-black'>
             <div className='flex items-center justify-center gap-5'>
@@ -164,7 +164,7 @@ function Application() {
             A simple and fast way to shorten links.
           </h2>
         </section>
-        <section className='flex justify-center main-shadow'>
+        <section className='flex flex-col items-center justify-center main-shadow'>
           {linkShortenedModal ? (
             <ShorteredLink />
           ) : (
@@ -246,6 +246,7 @@ function Application() {
             </Tabs>
           )}
         </section>
+        <Footer />
       </main>
     </>
   );
